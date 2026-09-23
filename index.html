@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alvaro Mendieta Roa — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-900:#0d2438; --navy-800:#123249; --blue-600:#2f6690; --blue-400:#5b8fb5;
+  --line:#c7d6e2; --paper:#f4f6f8; --paper-2:#ffffff; --ink:#16232f; --ink-soft:#4a5c6b;
+  --radius:2px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0b1720; --paper-2:#101f2b; --ink:#e7edf2; --ink-soft:#9db0bd;
+    --line:#233544; --navy-900:#e7edf2; --navy-800:#cfe0ec;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0b1720; --paper-2:#101f2b; --ink:#e7edf2; --ink-soft:#9db0bd;
+  --line:#233544; --navy-900:#e7edf2; --navy-800:#cfe0ec;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',-apple-system,sans-serif;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); line-height:1.6;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif; color:var(--navy-900); letter-spacing:-0.01em;}
+
+nav{position:sticky; top:0; z-index:50; padding-top:env(safe-area-inset-top,0px);
+  background:color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);}
+.nav-inner{max-width:920px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;}
+.nav-name{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1rem; color:var(--navy-900); white-space:nowrap;}
+.nav-right{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+.nav-links{display:flex; gap:22px; list-style:none; flex-wrap:wrap;}
+.nav-links a{color:var(--ink-soft); text-decoration:none; font-size:0.88rem; font-weight:500;
+  padding:4px 2px; border-bottom:2px solid transparent; transition:color .15s, border-color .15s;}
+.nav-links a:hover, .nav-links a:focus-visible{color:var(--blue-600); border-color:var(--blue-600);}
+.lang-toggle{display:flex; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+.lang-toggle button{
+  font-family:'IBM Plex Mono',monospace; font-size:0.76rem; padding:6px 11px; background:var(--paper-2);
+  color:var(--ink-soft); border:none; cursor:pointer; transition:background .15s, color .15s;
+}
+.lang-toggle button.active{background:var(--blue-600); color:#fff;}
+.lang-toggle button:not(.active):hover{color:var(--blue-600);}
+
+.hero{max-width:920px; margin:0 auto; padding:64px 24px 48px; position:relative;}
+.hero-label{font-size:0.78rem; color:var(--blue-600); font-weight:500; margin-bottom:14px; display:flex; align-items:center; gap:10px;}
+.hero-label::before{content:""; width:28px; height:1px; background:var(--blue-600); display:inline-block;}
+.hero h1{font-size:clamp(2.1rem,5vw,3.1rem); line-height:1.08; margin-bottom:10px;}
+.hero .role{font-size:1.15rem; color:var(--blue-600); font-weight:500; margin-bottom:22px;}
+.hero p.lede{max-width:62ch; color:var(--ink-soft); font-size:1.02rem;}
+.hero-meta{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:28px; padding-top:22px; border-top:1px solid var(--line); font-size:0.86rem; color:var(--ink-soft);}
+.hero-meta a{color:var(--ink-soft); text-decoration:none;}
+.hero-meta a:hover{color:var(--blue-600);}
+.hero-meta span{font-family:'IBM Plex Mono',monospace; font-size:0.8rem;}
+
+section{max-width:920px; margin:0 auto; padding:52px 24px;}
+.section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:30px;}
+.section-head .idx{font-family:'IBM Plex Mono',monospace; color:var(--blue-400); font-size:0.85rem;}
+.section-head h2{font-size:1.5rem;}
+
+.job{display:grid; grid-template-columns:130px 1fr; gap:20px; padding:22px 0; border-top:1px solid var(--line);}
+.job:last-child{border-bottom:1px solid var(--line);}
+.job time{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--blue-600); line-height:1.5;}
+.job h3{font-size:1.05rem; margin-bottom:2px;}
+.job .org{color:var(--ink-soft); font-size:0.92rem; margin-bottom:10px;}
+.job ul{padding-left:18px; color:var(--ink); font-size:0.94rem;}
+.job li{margin-bottom:6px;}
+.job li::marker{color:var(--blue-400);}
+
+.edu-grid{display:grid; gap:1px; background:var(--line); border:1px solid var(--line);}
+.edu-item{background:var(--paper-2); padding:18px 20px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline;}
+.edu-item h3{font-size:0.98rem;}
+.edu-item .org{color:var(--ink-soft); font-size:0.88rem;}
+.edu-item time{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--blue-600); white-space:nowrap;}
+
+.skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+.skill-card{background:var(--paper-2); padding:20px;}
+.skill-card h3{font-size:0.82rem; color:var(--blue-600); font-weight:600; margin-bottom:10px;}
+.skill-card ul{list-style:none; font-size:0.9rem; color:var(--ink);}
+.skill-card li{padding:5px 0; border-top:1px dashed var(--line);}
+.skill-card li:first-child{border-top:none;}
+
+.project{border:1px solid var(--line); padding:24px; background:var(--paper-2); display:grid; gap:14px;}
+.project h3{font-size:1.05rem;}
+.project .tag-row{display:flex; gap:8px; flex-wrap:wrap;}
+.tag{font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--blue-600); border:1px solid var(--blue-400); padding:3px 8px; border-radius:var(--radius);}
+.project p{color:var(--ink-soft); font-size:0.94rem;}
+
+.featured-project{border:1px solid var(--blue-400); background:var(--paper-2); padding:28px; display:grid; gap:16px; margin-bottom:28px;}
+.featured-project .kicker{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--blue-600);}
+.featured-project h3{font-size:1.2rem; line-height:1.3;}
+.featured-project .role{font-size:0.9rem; color:var(--blue-600); font-weight:500;}
+.featured-project p{color:var(--ink-soft); font-size:0.94rem;}
+.stat-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+.stat{background:var(--paper); padding:14px 12px;}
+.stat .num{font-family:'IBM Plex Mono',monospace; font-size:1.15rem; color:var(--navy-900); font-weight:600; display:block;}
+.stat .label{font-size:0.72rem; color:var(--ink-soft); margin-top:2px; display:block;}
+.featured-project .links{display:flex; gap:18px; flex-wrap:wrap; margin-top:2px;}
+.featured-project .links a{color:var(--blue-600); text-decoration:none; font-size:0.9rem; font-weight:500; border-bottom:1px solid var(--blue-400); padding-bottom:2px;}
+.featured-project .links a:hover{color:var(--navy-900); border-color:var(--navy-900);}
+.sub-project-label{font-size:0.82rem; color:var(--ink-soft); margin-bottom:12px;}
+
+.contact-box{background:var(--navy-800); color:var(--paper); padding:44px 32px; display:grid; gap:18px;}
+:root:not([data-theme="light"]) .contact-box{color:var(--navy-800); background:var(--paper-2); border:1px solid var(--line);}
+:root[data-theme="dark"] .contact-box{color:var(--paper); background:var(--navy-800); border:none;}
+.contact-box h2{color:inherit; font-size:1.4rem;}
+.contact-links{display:flex; flex-wrap:wrap; gap:14px 26px;}
+.contact-links a{color:inherit; text-decoration:none; font-size:0.94rem; font-weight:500; border-bottom:1px solid color-mix(in srgb, currentColor 40%, transparent); padding-bottom:2px;}
+.contact-links a:hover{border-color:currentColor;}
+
+footer{max-width:920px; margin:0 auto; padding:28px 24px 48px; color:var(--ink-soft); font-size:0.78rem; font-family:'IBM Plex Mono',monospace;}
+
+@media (max-width:640px){
+  .job{grid-template-columns:1fr; gap:8px;}
+  .nav-links{gap:14px;}
+  .nav-links a{font-size:0.8rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">A. Mendieta Roa</span>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#perfil" data-i18n="nav.perfil"></a></li>
+        <li><a href="#experiencia" data-i18n="nav.experiencia"></a></li>
+        <li><a href="#educacion" data-i18n="nav.educacion"></a></li>
+        <li><a href="#habilidades" data-i18n="nav.habilidades"></a></li>
+        <li><a href="#proyectos" data-i18n="nav.proyectos"></a></li>
+        <li><a href="#contacto" data-i18n="nav.contacto"></a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="perfil">
+  <p class="hero-label" data-i18n="hero.label"></p>
+  <h1>Alvaro Daniel<br>Mendieta Roa</h1>
+  <p class="role" data-i18n="hero.role"></p>
+  <p class="lede" data-i18n="hero.lede"></p>
+  <div class="hero-meta">
+    <span>Asunción, Paraguay</span>
+    <a href="mailto:roadaniel20.09@gmail.com">roadaniel20.09@gmail.com</a>
+    <a href="tel:+595994349088">+595 0994349088</a>
+    <a href="https://linkedin.com/in/alvaro-mendieta-roa" target="_blank" rel="noopener">linkedin.com/in/alvaro-mendieta-roa</a>
+    <span data-i18n="hero.toeic"></span>
+  </div>
+</header>
+
+<section id="experiencia">
+  <div class="section-head"><span class="idx">01</span><h2 data-i18n="exp.head"></h2></div>
+
+  <div class="job">
+    <time data-i18n="exp.j1.time"></time>
+    <div>
+      <h3 data-i18n="exp.j1.title"></h3>
+      <p class="org" data-i18n="exp.j1.org"></p>
+      <ul>
+        <li data-i18n="exp.j1.b1"></li>
+        <li data-i18n="exp.j1.b2"></li>
+        <li data-i18n="exp.j1.b3"></li>
+        <li data-i18n="exp.j1.b4"></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <time data-i18n="exp.j2.time"></time>
+    <div>
+      <h3 data-i18n="exp.j2.title"></h3>
+      <p class="org" data-i18n="exp.j2.org"></p>
+      <ul>
+        <li data-i18n="exp.j2.b1"></li>
+        <li data-i18n="exp.j2.b2"></li>
+        <li data-i18n="exp.j2.b3"></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <time>Paraguay</time>
+    <div>
+      <h3 data-i18n="exp.j3.title"></h3>
+      <p class="org">Petropar</p>
+      <ul>
+        <li data-i18n="exp.j3.b1"></li>
+        <li data-i18n="exp.j3.b2"></li>
+        <li data-i18n="exp.j3.b3"></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <time>Paraguay</time>
+    <div>
+      <h3 data-i18n="exp.j4.title"></h3>
+      <p class="org" data-i18n="exp.j4.org"></p>
+      <ul>
+        <li data-i18n="exp.j4.b1"></li>
+        <li data-i18n="exp.j4.b2"></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="educacion">
+  <div class="section-head"><span class="idx">02</span><h2 data-i18n="edu.head"></h2></div>
+  <div class="edu-grid">
+    <div class="edu-item">
+      <div><h3 data-i18n="edu.e1.title"></h3><p class="org" data-i18n="edu.e1.org"></p></div>
+      <time>2025–2026</time>
+    </div>
+    <div class="edu-item">
+      <div><h3 data-i18n="edu.e2.title"></h3><p class="org">UPTP, Paraguay</p></div>
+      <time>2023–2024</time>
+    </div>
+    <div class="edu-item">
+      <div><h3 data-i18n="edu.e3.title"></h3><p class="org">IPT-FIUNA, Paraguay</p></div>
+      <time>2020–2022</time>
+    </div>
+    <div class="edu-item">
+      <div><h3 data-i18n="edu.e4.title"></h3><p class="org">Google (Coursera)</p></div>
+      <time data-i18n="edu.e4.time"></time>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="section-head"><span class="idx">03</span><h2 data-i18n="skills.head"></h2></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3 data-i18n="skills.c1.h"></h3>
+      <ul>
+        <li data-i18n="skills.c1.l1"></li>
+        <li data-i18n="skills.c1.l2"></li>
+        <li data-i18n="skills.c1.l3"></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3 data-i18n="skills.c2.h"></h3>
+      <ul>
+        <li data-i18n="skills.c2.l1"></li>
+        <li data-i18n="skills.c2.l2"></li>
+        <li data-i18n="skills.c2.l3"></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3 data-i18n="skills.c3.h"></h3>
+      <ul>
+        <li data-i18n="skills.c3.l1"></li>
+        <li data-i18n="skills.c3.l2"></li>
+        <li data-i18n="skills.c3.l3"></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3 data-i18n="skills.c4.h"></h3>
+      <ul>
+        <li data-i18n="skills.c4.l1"></li>
+        <li data-i18n="skills.c4.l2"></li>
+        <li data-i18n="skills.c4.l3"></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="section-head"><span class="idx">04</span><h2 data-i18n="proj.head"></h2></div>
+
+  <div class="featured-project">
+    <span class="kicker" data-i18n="proj.kicker"></span>
+    <h3>Driving Industrial Service Transformation through Advanced Technology Management</h3>
+    <p class="role" data-i18n="proj.role"></p>
+    <p data-i18n="proj.desc"></p>
+    <div class="stat-row">
+      <div class="stat"><span class="num">8/9</span><span class="label" data-i18n="proj.stat1"></span></div>
+      <div class="stat"><span class="num">8.18</span><span class="label" data-i18n="proj.stat2"></span></div>
+      <div class="stat"><span class="num">16</span><span class="label" data-i18n="proj.stat3"></span></div>
+      <div class="stat"><span class="num">13.5%</span><span class="label" data-i18n="proj.stat4"></span></div>
+    </div>
+    <div class="tag-row">
+      <span class="tag">FlexSim</span><span class="tag">RULA</span><span class="tag">NIOSH</span>
+      <span class="tag">Digital Twin</span><span class="tag">DCF / TIR</span>
+    </div>
+    <div class="links">
+      <a href="https://capstone-project-lac-iota.vercel.app/" target="_blank" rel="noopener" data-i18n="proj.link"></a>
+    </div>
+  </div>
+
+  <p class="sub-project-label" data-i18n="proj.sublabel"></p>
+  <div class="project">
+    <h3 data-i18n="proj.p2.title"></h3>
+    <p data-i18n="proj.p2.desc"></p>
+    <div class="tag-row">
+      <span class="tag">Python</span><span class="tag">K-Means</span>
+      <span class="tag" data-i18n="proj.p2.tag1"></span><span class="tag">Apriori</span>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="contact-box">
+    <h2 data-i18n="contact.h"></h2>
+    <p data-i18n="contact.p"></p>
+    <div class="contact-links">
+      <a href="mailto:roadaniel20.09@gmail.com">roadaniel20.09@gmail.com</a>
+      <a href="tel:+595994349088">+595 0994349088</a>
+      <a href="https://linkedin.com/in/alvaro-mendieta-roa" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>Asunción, Paraguay</footer>
+
+<script>
+const translations = {
+  es: {
+    "nav.perfil":"Perfil","nav.experiencia":"Experiencia","nav.educacion":"Educación",
+    "nav.habilidades":"Habilidades","nav.proyectos":"Proyectos","nav.contacto":"Contacto",
+    "hero.label":"Perfil profesional",
+    "hero.role":"Ingeniero Industrial — título en trámite",
+    "hero.lede":"Formación técnica en Mecánica Industrial y experiencia práctica en logística, control de calidad y sistemas ERP. He trabajado con transacciones ERP en operaciones de almacén, transferencias y despachos de importación/exportación durante una pasantía en una manufacturera en Taiwán. Orientado a procesos, con capacidad para interpretar sistemas técnicos, verificar cumplimiento de estándares y generar reportes claros y estructurados.",
+    "hero.toeic":"TOEIC 780/990 · Inglés intermedio",
+    "exp.head":"Experiencia relevante",
+    "exp.j1.time":"Jun. – Ago. 2026 · Taiwán",
+    "exp.j1.title":"Pasante — Administración / ERP y Logística",
+    "exp.j1.org":"Acelon Chemicals & Fiber Co., Ltd. — manufactura de hilados textiles",
+    "exp.j1.b1":"Gestión de transacciones ERP: transferencias entre almacenes, estructura de producto, órdenes de despacho (exportación y mercado local) y registro de recepción de materiales",
+    "exp.j1.b2":"Ejecución de procedimientos de embarque de exportación y control de inventario en dos etapas de almacén",
+    "exp.j1.b3":"Apoyo en control de calidad (denier, OPU, matching de color) y recolección de datos de producción",
+    "exp.j1.b4":"Rotaciones en producción, logística/almacén, comercio exterior e I+D dentro de la planta",
+    "exp.j2.time":"Dic. 2023 – Feb. 2024 · Asunción",
+    "exp.j2.title":"Pasante de Logística e Inventario",
+    "exp.j2.org":"Soluparts S.R.L. — repuestos automotrices",
+    "exp.j2.b1":"Control de inventario de repuestos automotrices importados",
+    "exp.j2.b2":"Inspección de mercadería entrante y verificación de documentación",
+    "exp.j2.b3":"Apoyo en operaciones de almacén y logística en el área administrativa",
+    "exp.j3.title":"Pasante de Laboratorio de Control de Calidad",
+    "exp.j3.b1":"Ensayos de laboratorio y verificación de calidad de productos derivados del petróleo",
+    "exp.j3.b2":"Aplicación de procedimientos estándar para asegurar cumplimiento normativo",
+    "exp.j3.b3":"Apoyo en documentación y reporte de resultados de ensayos",
+    "exp.j4.title":"Pasante Operador de Máquinas",
+    "exp.j4.org":"Corsat — Ingeniería Metalúrgica",
+    "exp.j4.b1":"Operación de fresadoras, tornos y equipos CNC; tareas de soldadura y fabricación",
+    "exp.j4.b2":"Cumplimiento de estándares de seguridad y operación",
+    "edu.head":"Educación",
+    "edu.e1.title":"Ingeniería Industrial","edu.e1.org":"NTUST — Estudiante de intercambio, Taiwán",
+    "edu.e2.title":"Ingeniería Industrial",
+    "edu.e3.title":"Tecnicatura en Mecánica Industrial",
+    "edu.e4.title":"Certificación en Project Management","edu.e4.time":"Cert.",
+    "skills.head":"Habilidades",
+    "skills.c1.h":"Logística y almacén","skills.c1.l1":"Control de inventario","skills.c1.l2":"Transferencias y despachos","skills.c1.l3":"Documentación de embarques (imp/exp)",
+    "skills.c2.h":"Sistemas ERP","skills.c2.l1":"Transacciones entre almacenes","skills.c2.l2":"Estructura de producto","skills.c2.l3":"Órdenes de despacho y registro de materiales",
+    "skills.c3.h":"Calidad y datos","skills.c3.l1":"Control de calidad e inspección","skills.c3.l2":"Excel nivel intermedio, KPIs","skills.c3.l3":"Reportes estructurados",
+    "skills.c4.h":"Otros","skills.c4.l1":"Inglés intermedio (TOEIC 780/990)","skills.c4.l2":"Operación CNC (fresadoras, tornos)","skills.c4.l3":"Autonomía y trabajo en equipo",
+    "proj.head":"Proyectos",
+    "proj.kicker":"Trabajo final de grado — UPTP, 2026",
+    "proj.role":"Mi rol: evaluación de riesgo ergonómico (metodología RULA & NIOSH), con participación activa en el proyecto en conjunto",
+    "proj.desc":"Gemelo digital y framework de colaboración humano-robot para una planta de fabricación de colchones de espuma en Paraguay. El equipo desarrolló dos simulaciones de eventos discretos en FlexSim (operación manual vs. automatizada), cuantificó el riesgo ergonómico en 9 estaciones de trabajo, y evaluó la factibilidad financiera de la automatización mediante un flujo de caja descontado a 10 años.",
+    "proj.stat1":"estaciones con RULA 7/7","proj.stat2":"índice de levantamiento pico","proj.stat3":"posiciones eliminadas","proj.stat4":"TIR caso base",
+    "proj.link":"Ver proyecto ↗",
+    "proj.sublabel":"Otro proyecto académico",
+    "proj.p2.title":"Minería de datos — segmentación de clientes retail",
+    "proj.p2.desc":"Proyecto final aplicando K-Means, árboles de decisión y reglas de asociación (Apriori) en Python sobre un dataset de retail, para identificar segmentos de clientes y patrones de compra.",
+    "proj.p2.tag1":"Árboles de decisión",
+    "contact.h":"Conversemos",
+    "contact.p":"Disponible para roles de planta, calidad, logística o análisis de datos."
+  },
+  en: {
+    "nav.perfil":"Profile","nav.experiencia":"Experience","nav.educacion":"Education",
+    "nav.habilidades":"Skills","nav.proyectos":"Projects","nav.contacto":"Contact",
+    "hero.label":"Professional profile",
+    "hero.role":"Industrial Engineer — degree in progress",
+    "hero.lede":"Technical background in Industrial Mechanics and hands-on experience in logistics, quality control, and ERP systems. I worked with ERP transactions across warehouse operations, transfers, and import/export dispatch during an internship at a manufacturer in Taiwan. Process-oriented, with the ability to interpret technical systems, verify compliance with standards, and produce clear, structured reports.",
+    "hero.toeic":"TOEIC 780/990 · Intermediate English",
+    "exp.head":"Relevant Experience",
+    "exp.j1.time":"Jun. – Aug. 2026 · Taiwan",
+    "exp.j1.title":"Intern — Administration / ERP and Logistics",
+    "exp.j1.org":"Acelon Chemicals & Fiber Co., Ltd. — textile yarn manufacturing",
+    "exp.j1.b1":"Managed ERP transactions: inter-warehouse transfers, product structure, dispatch orders (export and local market), and material receipt registration",
+    "exp.j1.b2":"Executed export shipment procedures and inventory control across a two-stage warehouse",
+    "exp.j1.b3":"Supported quality control (denier, OPU, color matching) and production data collection",
+    "exp.j1.b4":"Rotations across production, logistics/warehouse, foreign trade, and R&D within the plant",
+    "exp.j2.time":"Dec. 2023 – Feb. 2024 · Asunción",
+    "exp.j2.title":"Logistics and Inventory Intern",
+    "exp.j2.org":"Soluparts S.R.L. — automotive parts",
+    "exp.j2.b1":"Controlled inventory of imported automotive parts",
+    "exp.j2.b2":"Inspected incoming goods and verified documentation",
+    "exp.j2.b3":"Supported warehouse and logistics operations in the administrative area",
+    "exp.j3.title":"Quality Control Laboratory Intern",
+    "exp.j3.b1":"Conducted lab testing and quality verification of petroleum-derived products",
+    "exp.j3.b2":"Applied standard procedures to ensure regulatory compliance",
+    "exp.j3.b3":"Supported documentation and reporting of test results",
+    "exp.j4.title":"Machine Operator Intern",
+    "exp.j4.org":"Corsat — Metallurgical Engineering",
+    "exp.j4.b1":"Operated milling machines, lathes, and CNC equipment; welding and fabrication tasks",
+    "exp.j4.b2":"Complied with safety and operating standards",
+    "edu.head":"Education",
+    "edu.e1.title":"Industrial Engineering","edu.e1.org":"NTUST — Exchange student, Taiwan",
+    "edu.e2.title":"Industrial Engineering",
+    "edu.e3.title":"Technical Degree in Industrial Mechanics",
+    "edu.e4.title":"Project Management Certification","edu.e4.time":"Cert.",
+    "skills.head":"Skills",
+    "skills.c1.h":"Logistics & warehousing","skills.c1.l1":"Inventory control","skills.c1.l2":"Transfers and dispatch","skills.c1.l3":"Shipping documentation (import/export)",
+    "skills.c2.h":"ERP systems","skills.c2.l1":"Warehouse transactions","skills.c2.l2":"Product structure","skills.c2.l3":"Dispatch orders and material registration",
+    "skills.c3.h":"Quality & data","skills.c3.l1":"Quality control and inspection","skills.c3.l2":"Intermediate Excel, KPIs","skills.c3.l3":"Structured reporting",
+    "skills.c4.h":"Other","skills.c4.l1":"Intermediate English (TOEIC 780/990)","skills.c4.l2":"CNC operation (milling machines, lathes)","skills.c4.l3":"Autonomy and teamwork",
+    "proj.head":"Projects",
+    "proj.kicker":"Capstone Thesis — UPTP, 2026",
+    "proj.role":"My role: ergonomic risk assessment (RULA & NIOSH methodology), with active involvement across the project as a whole",
+    "proj.desc":"Digital twin and human-robot collaboration framework for a foam mattress manufacturing facility in Paraguay. The team built two discrete-event simulations in FlexSim (manual vs. automated operation), quantified ergonomic risk across 9 workstations, and evaluated the financial feasibility of automation through a 10-year discounted cash flow model.",
+    "proj.stat1":"workstations with RULA 7/7","proj.stat2":"peak lifting index","proj.stat3":"positions eliminated","proj.stat4":"base case IRR",
+    "proj.link":"View project ↗",
+    "proj.sublabel":"Other academic project",
+    "proj.p2.title":"Data mining — retail customer segmentation",
+    "proj.p2.desc":"Final project applying K-Means, decision trees, and association rules (Apriori) in Python on a retail dataset to identify customer segments and purchasing patterns.",
+    "proj.p2.tag1":"Decision trees",
+    "contact.h":"Let's talk",
+    "contact.p":"Available for plant, quality, logistics, or data analysis roles."
+  }
+};
+
+function applyLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    const key = el.getAttribute('data-i18n');
+    const dict = translations[lang];
+    if(dict && dict[key] !== undefined){ el.textContent = dict[key]; }
+  });
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-toggle button').forEach(function(btn){
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  try{ localStorage.setItem('cv-lang', lang); }catch(e){}
+}
+
+let initialLang = 'es';
+try{
+  const saved = localStorage.getItem('cv-lang');
+  if(saved === 'es' || saved === 'en'){ initialLang = saved; }
+  else if(navigator.language && navigator.language.toLowerCase().indexOf('es') !== 0){ initialLang = 'en'; }
+}catch(e){}
+
+applyLang(initialLang);
+
+document.querySelectorAll('.lang-toggle button').forEach(function(btn){
+  btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang')); });
+});
+</script>
+
+</body>
+</html>
